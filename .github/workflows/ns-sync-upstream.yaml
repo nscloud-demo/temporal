@@ -54,6 +54,9 @@ jobs:
           git reset --hard patches
       - name: update workflows
         run: |
+          # Skip releases
+          rm .github/workflows/trigger-publish.yml
+
           # Update workflow to use forked actions.
           sed -e 's/uses: temporalio\//uses: nscloud-demo\/temporalio-/g' -i .github/workflows/*.y*ml
 
