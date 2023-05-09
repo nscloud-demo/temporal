@@ -16,7 +16,7 @@ on:
     - cron: "0 3 * * *" # daily at 3am
 
 env:
-  main_branch: main
+  main_branch: master
   upstream_url: https://github.com/temporalio/temporal.git
 
 jobs:
