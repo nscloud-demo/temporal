@@ -1,5 +1,7 @@
 name: Features Integration
 
+permissions: read-all
+
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
