@@ -6,7 +6,7 @@ permissions:
 jobs:
   golangci:
     name: lint
-    runs-on: ubuntu-latest
+    runs-on: nscloud
     steps:
       - uses: actions/checkout@v4
         with:

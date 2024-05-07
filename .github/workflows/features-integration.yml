@@ -16,14 +16,14 @@ concurrency: # Auto-cancel existing runs in the PR when a new commit is pushed
 
 jobs:
   build-docker-image:
-    uses: temporalio/docker-builds/.github/workflows/docker-build-only.yml@main
+    uses: nscloud-demo/temporalio-docker-builds/.github/workflows/docker-build-only.yml@main
     with:
       temporal-server-repo-path: ${{github.event.pull_request.head.repo.full_name}}
       temporal-server-repo-ref: ${{github.event.pull_request.head.ref}}
 
   feature-tests-ts:
     needs: build-docker-image
-    uses: temporalio/features/.github/workflows/typescript.yaml@main
+    uses: nscloud-demo/temporalio-features/.github/workflows/typescript.yaml@main
     with:
       # This field is not actually used by these workflow if docker-image-artifact-name
       # is set, but it's marked as required, so supply some string.
@@ -33,7 +33,7 @@ jobs:
 
   feature-tests-go:
     needs: build-docker-image
-    uses: temporalio/features/.github/workflows/go.yaml@main
+    uses: nscloud-demo/temporalio-features/.github/workflows/go.yaml@main
     with:
       version: __latest_features_docker_image__
       version-is-repo-ref: false
@@ -41,7 +41,7 @@ jobs:
 
   feature-tests-python:
     needs: build-docker-image
-    uses: temporalio/features/.github/workflows/python.yaml@main
+    uses: nscloud-demo/temporalio-features/.github/workflows/python.yaml@main
     with:
       version: __latest_features_docker_image__
       version-is-repo-ref: false
@@ -49,7 +49,7 @@ jobs:
 
   feature-tests-java:
     needs: build-docker-image
-    uses: temporalio/features/.github/workflows/java.yaml@main
+    uses: nscloud-demo/temporalio-features/.github/workflows/java.yaml@main
     with:
       version: __latest_features_docker_image__
       version-is-repo-ref: false
@@ -57,7 +57,7 @@ jobs:
 
   feature-tests-dotnet:
     needs: build-docker-image
-    uses: temporalio/features/.github/workflows/dotnet.yaml@main
+    uses: nscloud-demo/temporalio-features/.github/workflows/dotnet.yaml@main
     with:
       version: __latest_features_docker_image__
       version-is-repo-ref: false

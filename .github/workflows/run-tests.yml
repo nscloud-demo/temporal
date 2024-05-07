@@ -28,8 +28,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runs-on: [ubuntu-latest]
-    runs-on: ${{ matrix.runs-on }}
+        runs-on: nscloud
+    runs-on: nscloud
     steps:
       - uses: actions/checkout@v4
         with:
@@ -53,8 +53,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runs-on: [ubuntu-latest]
-    runs-on: ${{ matrix.runs-on }}
+        runs-on: nscloud
+    runs-on: nscloud
     steps:
       - uses: ScribeMD/docker-cache@0.3.7
         with:
@@ -73,8 +73,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runs-on: [ubuntu-latest]
-    runs-on: ${{ matrix.runs-on }}
+        runs-on: nscloud
+    runs-on: nscloud
     steps:
       - uses: actions/checkout@v4
         with:
@@ -96,8 +96,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runs-on: [ubuntu-latest]
-    runs-on: ${{ matrix.runs-on }}
+        runs-on: nscloud
+    runs-on: nscloud
     steps:
       - uses: ScribeMD/docker-cache@0.3.7
         with:
@@ -132,7 +132,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runs-on: [ubuntu-latest]
+        runs-on: nscloud
         name: [cass_es, cass_es8, sqlite, mysql8, postgres12, postgres12_pgx]
         shard_index: [0, 1, 2]
         include:
@@ -160,7 +160,7 @@ jobs:
             persistence_type: sql
             persistence_driver: postgres12_pgx
             containers: [postgresql]
-    runs-on: ${{ matrix.runs-on }}
+    runs-on: nscloud
     env:
       TEST_TOTAL_SHARDS: 3
       TEST_SHARD_INDEX: ${{ matrix.shard_index }}
@@ -201,7 +201,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runs-on: [ubuntu-latest]
+        runs-on: nscloud
         name: [cass_es]
 #        name: [cass_es, cass_es8, mysql8, postgres12, postgres12_pgx]
         include:
@@ -225,7 +225,7 @@ jobs:
 #            persistence_type: sql
 #            persistence_driver: postgres12_pgx
 #            containers: [postgresql]
-    runs-on: ${{ matrix.runs-on }}
+    runs-on: nscloud
     env:
       PERSISTENCE_TYPE: ${{ matrix.persistence_type }}
       PERSISTENCE_DRIVER: ${{ matrix.persistence_driver }}
@@ -264,7 +264,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runs-on: [ubuntu-latest]
+        runs-on: nscloud
         name: [cass_es, cass_es8, mysql8, postgres12, postgres12_pgx]
         include:
           - name: cass_es
@@ -287,7 +287,7 @@ jobs:
             persistence_type: sql
             persistence_driver: postgres12_pgx
             containers: [postgresql]
-    runs-on: ${{ matrix.runs-on }}
+    runs-on: nscloud
     env:
       PERSISTENCE_TYPE: ${{ matrix.persistence_type }}
       PERSISTENCE_DRIVER: ${{ matrix.persistence_driver }}
@@ -328,7 +328,7 @@ jobs:
       - functional-test
       - functional-test-xdc
       - functional-test-ndc
-    runs-on: ubuntu-latest
+    runs-on: nscloud
     if: always()
     env:
       RESULTS: ${{ toJSON(needs.*.result) }}
